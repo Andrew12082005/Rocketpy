@@ -7,6 +7,24 @@ from random import sample
 env = Environment(latitude=22.17475, longitude=120.89275, elevation=2)
 env.set_date((2025,7,27,6))
 env.set_atmospheric_model(type="Windy", file="ECMWF")
+"""
+env = Environment(latitude=22.17475, longitude=120.89275, elevation=2)
+env.set_atmospheric_model(
+    type="custom_atmosphere",
+    pressure=None,
+    temperature=300,
+    wind_u=[
+        (0,0), # 5 m/s at 0 m
+        (1000,0) # 10 m/s at 1000 m
+    ],
+    wind_v=[
+        (0,0), # 5 m/s at 0 m
+        (1000,0)# 10 m/s at 1000 m
+
+    ],
+)
+"""
+#env.plots.atmospheric_model()
 
 Pioneer5K = SolidMotor(
     thrust_source = r"./thrustcurve.eng",
@@ -22,7 +40,7 @@ Pioneer5K = SolidMotor(
     grains_center_of_mass_position=0.295,
     center_of_dry_mass_position=0.281798,
     nozzle_position=0,
-    burn_time=4,
+    burn_time=6,
     throat_radius=9 / 1000,
     coordinate_system_orientation="nozzle_to_combustion_chamber")
 
@@ -65,7 +83,6 @@ rail_buttons = kilakila.set_rail_buttons(
     angular_position = 45 
 )
 
-
 main = kilakila.add_parachute(
     name="Main",
     cd_s=5.19,
@@ -83,7 +100,7 @@ drogue = kilakila.add_parachute(
     noise=(0, 8.3, 0.5),
 )
 test = Flight(
-    rocket = kilakila, environment=env, rail_length=4, inclination=85, heading=90
+    rocket = kilakila, environment=env, rail_length=4, inclination=86, heading=90
 )
 
 test.export_kml(
@@ -91,9 +108,11 @@ test.export_kml(
     extrude=True,
     altitude_mode="relative_to_ground",
 )
+
 env.info()
 #kilakila.draw()
-#Pioneer5K.info()
+Pioneer5K.info()
+
 test.prints.initial_conditions()
 test.prints.launch_rail_conditions()
 test.prints.out_of_rail_conditions()
@@ -103,10 +122,10 @@ test.prints.events_registered()
 test.prints.impact_conditions()
 test.prints.maximum_values()
 test.plots.trajectory_3d()
-test.speed.plot(0,test.max_time)
-test.plots.angular_kinematics_data()
-test.plots.stability_and_control_data()
-test.plots.linear_kinematics_data()
-test.plots.flight_path_angle_data()
+#test.speed.plot(0,test.max_time)
+#test.plots.angular_kinematics_data()
+#test.plots.stability_and_control_data()
+#test.plots.linear_kinematics_data()
+#test.plots.flight_path_angle_data()
 
 
