@@ -5,8 +5,8 @@ import random
 from random import sample
 
 env = Environment(latitude=22.17475, longitude=120.89275, elevation=2)
-env.set_date((2025,7,27,6))
-env.set_atmospheric_model(type="Windy", file="ECMWF")
+env.set_date((2025,4,10,6))
+env.set_atmospheric_model(type="Forecast", file="GFS")
 """
 env = Environment(latitude=22.17475, longitude=120.89275, elevation=2)
 env.set_atmospheric_model(
@@ -122,7 +122,7 @@ test.prints.events_registered()
 test.prints.impact_conditions()
 test.prints.maximum_values()
 test.plots.trajectory_3d()
-#test.speed.plot(0,test.max_time)
+test.speed.plot(0,test.max_time)
 #test.plots.angular_kinematics_data()
 #test.plots.stability_and_control_data()
 #test.plots.linear_kinematics_data()
