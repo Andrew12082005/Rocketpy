@@ -5,7 +5,7 @@ import random
 from random import sample
 
 env = Environment(latitude=22.17475, longitude=120.89275, elevation=2)
-env.set_date((2025,4,10,6))
+env.set_date((2025,4,25,6))
 env.set_atmospheric_model(type="Forecast", file="GFS")
 """
 env = Environment(latitude=22.17475, longitude=120.89275, elevation=2)
@@ -25,7 +25,7 @@ env.set_atmospheric_model(
 )
 """
 #env.plots.atmospheric_model()
-#Hi
+
 
 Pioneer5K = SolidMotor(
     thrust_source = r"./thrustcurve.eng",
