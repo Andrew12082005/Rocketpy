@@ -3,6 +3,13 @@ import numpy as np
 import datetime
 import random
 from random import sample
+from rocketpy.stochastic import (
+    StochasticEnvironment,
+    StochasticSolidMotor,
+    StochasticRocket,
+    StochasticFlight,
+)
+
 
 env = Environment(latitude=22.17475, longitude=120.89275, elevation=2)
 env.set_date((2025,4,25,6))
@@ -103,27 +110,27 @@ drogue = kilakila.add_parachute(
 test = Flight(
     rocket = kilakila, environment=env, rail_length=4, inclination=86, heading=90
 )
-
+"""
 test.export_kml(
     file_name="trajectory.kml",
     extrude=True,
     altitude_mode="relative_to_ground",
 )
-
-env.info()
+"""
+#env.info()
 #kilakila.draw()
-Pioneer5K.info()
+#Pioneer5K.info()
 
-test.prints.initial_conditions()
-test.prints.launch_rail_conditions()
-test.prints.out_of_rail_conditions()
-test.prints.burn_out_conditions()
-test.prints.apogee_conditions()
-test.prints.events_registered()
-test.prints.impact_conditions()
-test.prints.maximum_values()
-test.plots.trajectory_3d()
-test.speed.plot(0,test.max_time)
+#test.prints.initial_conditions()
+#test.prints.launch_rail_conditions()
+#test.prints.out_of_rail_conditions()
+#test.prints.burn_out_conditions()
+#test.prints.apogee_conditions()
+#test.prints.events_registered()
+#test.prints.impact_conditions()
+#test.prints.maximum_values()
+#test.plots.trajectory_3d()
+#test.speed.plot(0,test.max_time)
 #test.plots.angular_kinematics_data()
 #test.plots.stability_and_control_data()
 #test.plots.linear_kinematics_data()
